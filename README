@@ -1,0 +1,6 @@
+Application have been created only for learning purpose. 
+
+App is using SAXParser to download and parse RSS and twitter feed.
+Parsed feed is saved in database, application is using also TabHost(interface based on tabs).
+
+Works with Android 1.6.

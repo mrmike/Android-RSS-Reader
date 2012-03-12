@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.moczul.blog11"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="4" />
+    
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" /> 
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".TabBlog"
+                  android:label="@string/app_name">
+            
+        </activity>
+        
+        <!--  TabHost Activity -->
+        <activity android:name=".MyTabHost">
+        
+        	<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+        </activity>
+        
+        <!--  MainFeed Activity -->
+        <activity android:name=".Post" />
+ 
+        <!--  MiniFeed Activity -->
+        <activity android:name=".TabMiniblog" />
+ 
+        <!--  TwitterFeed Activity -->
+        <activity android:name=".TabTwitter" />
+ 
+
+    </application>
+</manifest>

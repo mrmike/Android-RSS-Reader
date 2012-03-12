@@ -1,0 +1,4 @@
+bin/
+gen/
+klucz.keystore
+proguard.cfg

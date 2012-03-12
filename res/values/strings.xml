@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, Blog11Activity!</string>
+    <string name="app_name">Blog11</string>
+    <string name="syncData">Pobierz wpisy</string>
+    <string name="syncTwitter">Pobierz tweety</string>
+</resources>
