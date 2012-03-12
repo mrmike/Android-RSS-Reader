@@ -75,8 +75,8 @@ public class TweetHandler extends DefaultHandler {
 			Log.d(TAG, "-------------------------------------");
 			current = false;
 		} else if(localName.equals("id")) {
-			
-			//pobieramy id tylko ze status nie z USER !!
+			// we're getting only the status id, not the user id, 
+			// cause we don't really need user id
 			if(isStatus) {
 				tweetItem.setTweet_id(Long.valueOf(currentValue));
 				Log.d(TAG, "-----------ID-------------------");

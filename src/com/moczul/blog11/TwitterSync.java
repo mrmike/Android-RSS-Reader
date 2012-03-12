@@ -35,8 +35,6 @@ public class TwitterSync {
 	
 	
 	private class Task extends AsyncTask<URL, Integer, Long> {
-		
-		
 
 		@Override
 		protected void onPreExecute() {

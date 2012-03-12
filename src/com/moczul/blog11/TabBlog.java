@@ -1,41 +1,25 @@
 package com.moczul.blog11;
 
-import java.net.URL;
 import java.util.ArrayList;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.AnimationDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.VideoView;
 
 public class TabBlog extends Activity implements OnItemClickListener {
 	
 	private static final String TAG = "blog11";
 	private ListView listItems;
 	private MyXMLHandler myHandler;
-	ArrayAdapter<String> adapter;
+	private ArrayAdapter<String> adapter;
 	private boolean isCorrect;
 	private DBHelper mDBHelper;
 	private ArrayList<String> titles;
@@ -128,7 +112,6 @@ public class TabBlog extends Activity implements OnItemClickListener {
         Cursor cFeed = mDBHelper.getDbFeed(db);
         titles = new ArrayList<String>();
         
-        // wypelniamy tablice titles, tytułami postów/ dostępnych w bazie
         if (cFeed.moveToFirst()) {
         	do {
         		titles.add(cFeed.getString(0));

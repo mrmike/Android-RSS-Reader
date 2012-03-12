@@ -56,6 +56,7 @@ public class RSSItem {
 	}
 
 	public void setContent(String content) {
+		// thanks to fromHtml method we're saving plain text in database, not the html
 		this.content = Html.fromHtml(content).toString();
 	}
 

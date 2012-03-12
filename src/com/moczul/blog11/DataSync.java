@@ -2,29 +2,24 @@ package com.moczul.blog11;
 
 import java.net.URL;
 import java.util.ArrayList;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
-
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
 public class DataSync {
 
+	private static final String TAG = "blog11";
 	private Context context;
 	private MyXMLHandler myHandler;
 	private boolean isCorrect;
-	private static final String TAG = "blog11";
 	private ArrayList<RSSItem> mFeed;
 	private MyTabHost mActivty; 
 
@@ -40,7 +35,7 @@ public class DataSync {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			Toast.makeText(context, "Pobieranie wpisów...", Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, "Getting new posts.", Toast.LENGTH_SHORT).show();
 
 		}
 
@@ -52,6 +47,7 @@ public class DataSync {
 				SAXParser sp = spf.newSAXParser();
 				XMLReader xr = sp.getXMLReader();
 
+				// address of feed source
 				URL sourceUrl = new URL(
 						"http://feeds.feedburner.com/blog11/icRr");
 
@@ -68,6 +64,7 @@ public class DataSync {
 
 			DBHelper dbhelper = new DBHelper(context);
 			SQLiteDatabase db = dbhelper.getWritableDatabase();
+			// adding downloaded feed to application database
 			dbhelper.addFeedToDB(mFeed, db);
 
 			dbhelper.close();
@@ -78,13 +75,15 @@ public class DataSync {
 		@Override
 		protected void onPostExecute(Long result) {
 			super.onPostExecute(result);
-			Toast.makeText(context, "Wpisy zostały zaktualizowane",
+			Toast.makeText(context, "Posts have been updated.",
 					Toast.LENGTH_SHORT).show();
 			NotificationManager nm = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
 			Notification n = new Notification();
 			n.vibrate = new long[] {200, 200, 200, 200};
+			// we are using vibration signal to notify user about new downloaded posts
 			nm.notify(15, n);
 			
+			// this method will refresh the list of posts and set current tab to the 1st
 			mActivty.afterUpdate(0);
 			
 			

@@ -24,7 +24,6 @@ public class RSSFeed {
 	}
 	
 	
-	// zwraca tytuly w postaci listy stringow
 	public ArrayList<String> getTitles() {
 		ArrayList<String> temp = new ArrayList<String>();
 		

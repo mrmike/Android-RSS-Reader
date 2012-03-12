@@ -11,7 +11,7 @@ import android.util.Log;
 
 public class MyXMLHandler extends DefaultHandler {
 	
-	private static final String TAG = "RSS";
+	private static final String TAG = "blog11";
 	
 	boolean currentElement = false;
 	String currentValue = null;
@@ -39,18 +39,19 @@ public class MyXMLHandler extends DefaultHandler {
 		
 		currentElement = true;
 		
-//		Log.d(TAG, "Pocz¹tek tagu: " + localName);
 		
 		if(localName.equals("channel")) {
 			feed = new RSSFeed();
 		}
 		
-		// jezeli napotyka na tag title tworzy now¹ instancje RSSItem()
+		// if we encounter title element we statars new instance of RSSItem
 		if(localName.equals("title")) {
 			feed.setItem(item);
 			item = new RSSItem();
 		} 
 		
+		// tip: if you want to parse content:encoded element, always use encoded, 
+		// the parser will not work with content:encoded and I don't really now why
 		if (localName.equals("encoded")) {
 			Log.d(TAG, "ENCODED");
 			isEncode = true;
@@ -64,13 +65,11 @@ public class MyXMLHandler extends DefaultHandler {
 		
 		currentElement = false;
 		
-//		Log.d(TAG, "Koniec tagu: " + localName);
 		
 		/** set value */
 		
 		if(localName.equals("title")) {
 			item.setTitle(currentValue);
-//			Log.d(TAG, currentValue);
 			
 		} else if (localName.equals("pubDate")) {
 			item.setPubDate(currentValue);
@@ -80,7 +79,6 @@ public class MyXMLHandler extends DefaultHandler {
 			Log.d(TAG, currentValue);
 			item.setLink(currentValue);
 		} else if (localName.equals("description")) {
-//			feed.setItem(item);
 			item.setDescription(currentValue);
 		} else if (localName.equals("encoded")) {
 			item.setContent(encode);
@@ -101,9 +99,4 @@ public class MyXMLHandler extends DefaultHandler {
 		}
 		currentElement = false;
 	}
-	
-	
-	
-	
-	
 }

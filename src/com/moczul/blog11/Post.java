@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 public class Post extends Activity {
 	
+	// activity is displaying one post
+	// the data(title, content) are retriving from the intent
+	
 	private TextView titleView;
 	private TextView contentView;
 	private DBHelper mHandler;
@@ -32,7 +35,7 @@ public class Post extends Activity {
 
 		Intent mIntent = getIntent();
 		
-		//getting data drom the intent
+		//getting data from the intent
 		Bundle b = mIntent.getExtras();
 		title = b.getString("title");
 		content = b.getString("content");
